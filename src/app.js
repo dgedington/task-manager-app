@@ -8,7 +8,9 @@ const taskRouter = require('./routers/task')
 const app = express()
 
 const publicDirectoryPath = './public' 
-
+var corsOptions = {
+    origin: 'https://dgeding-task-manager-frontend.herokuapp.com/'
+  }
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
 
