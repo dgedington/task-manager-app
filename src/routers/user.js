@@ -71,22 +71,6 @@ router.post('/users/logout/all', auth, async (req, res) => {
 
 router.get('/users/me', auth, async (req, res) => res.send(req.user))
 
-router.get('/users/:id', auth, async (req, res) => {
-    const _id = req.params.id
-
-    try {
-        const user = await User.findById(_id)
-        if (!user) {
-                return res.status(404).send('User Id not found.')
-            }
-            
-            res.send(user)
-
-    } catch (error) {
-        res.status(500).send(error)
-    }
-})
-
 router.patch('/users/me', auth, async (req, res) => {
     const updates = Object.keys(req.body)
     const allowedUpdates = ['name', 'email','password', 'age']
